@@ -1,0 +1,56 @@
+# Site Settings
+title: postkomik
+email: alwyahmad23@gmail.com
+description: Situs baca manga bahasa indonesia online
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://postkomik.github.io" # the base hostname & protocol for your site
+google_analytics: G-S8WBW5V67Q
+
+include: ["_pages"] 
+
+# User Settings
+username: postkomik
+user_description: Pengurus web
+disqus_username: postkomik-github-1
+
+# Social Media
+# Remove the item if you don't need it
+github_username: postkomik
+facebook_username: post.komik.54
+twitter_username: postkomik
+instagram_username: pokomanga
+linkedin_username: post-komik-44987a58
+medium_username: medium_username
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:title/
+paginate: 12
+paginate_path: "/page/:num/"
+svg_color: "#ff0a16"
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+ 
+
+# Links to include in menu navigation
+# For external links add external: true
+links:
+  - title: Home
+    url: /
+  - title: Daftar Manga
+    url: /daftar-manga.html
+  - title: Contact
+    url: /contact
+  - title: About us
+    url: /about
+  - title: Privacy Policy
+    url: /privacy-policy   
+
+# Exclude my node related stuff
+exclude: ['package.json', 'src', 'node_modules']

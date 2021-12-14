@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="{{ site.language }}" class="no-js">
+    {% include head.html %}
+    <body class="main-page has-push-menu">
+        {% include svg-icons.html %}
+        {% include header.html %}
+        
+            <main class="home" id="post" role="main">
+               <div class="arleth98">
+    <h2 class="goled">{{ page.title }}</h2>
+    <div class="inf-wrap">
+        <div class="img-thumb">            
+            {% if page.image %}
+         <img src="{{ page.image }}" alt="{{ page.title }}">
+             {% endif %}
+        </div>
+        <div class="inf-inc">
+            <div class="lol"><b>Status</b>: {{ page.status }}</div>
+            <div class="lol"><b>Released</b>: {{ page.date }}</div>
+            <div class="lol"><b>Type</b>: {{ page.category }}</div>
+            <div class="lol"><b>Post By</b>: {{ page.author }}</div>
+            <div class="lol"><b>Genres</b>:  <a href="{{ site.url }}{{ site.baseurl }}/tags/{{ page.tags }}">{{ page.tags }}</a>
+            </div> 
+            <div class="lol"><b>Keyword</b>: baca Manga, Baca Komik, Baca Manhua bahasa indonesia</div>
+            <div class="lol"><b>Name Blog</b>: https://postkomik.github.io</div>
+            <div class="lol"><b>Cms</b>: Jekyll</div>           
+        </div>
+    </div>
+    <br />
+    <div class="synopsis">
+        <b>Sinopsis  Komik Manga {{ page.title }} :</b><br />
+        <section class="content">
+                {{ content }}
+        </section>
+    </div>
+    <div class="synopsis">
+        <b>Chapter Komik {{ page.title }}</b><br />
+        <span class="sinopsiss">
+            <div id="grid" class="row">
+    {% assign posts = site.posts | where_exp:"post","post.is_generated != true" %}
+    {% for post in posts %}
+    {% if post.category == page.slug %}
+        <div class="box-body">
+            <div class="box-info">
+                <a class="judultag" href="{{ post.url | prepend: site.baseurl }}">
+                    <p class="judul">
+                        {{ post.title }}
+                    </p>
+                </a>
+                <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+                    <p class="description">{{ post.description }}</p>
+                </a>
+            </div>
+        </div>
+                 {% endif %}
+                 {% endfor %}
+                 </div>
+        </span>
+    </div>
+</div>
+
+                
+            </main>
+        
+        {% include pagination.html %}
+        {% include footer.html %}
+    </body>
+</html>
+
+
+

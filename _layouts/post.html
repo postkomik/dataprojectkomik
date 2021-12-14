@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/BlogPosting">
+    {% include head.html %}
+    <body class="has-push-menu">
+        {% include minutes-to-read.html %}
+        {% include svg-icons.html %}
+        {% include header.html %}
+ <section class="post">
+     <article role="article" id="post" class="post-content" itemprop="articleBody">
+         <p itemprop="post-info" class="post-info">
+             {% if page.date %}
+             <svg id="date" class="icon-calendar">
+                 <use xlink:href="#icon-calendar"></use>
+             </svg>
+             <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}" class="tanggal">
+                            {% include date.html date=page.date %}
+              </time>
+             {% endif %}
+             <svg id="clock" class="icon-clock">
+                 <use xlink:href="#icon-clock"></use>
+             </svg>
+             <span>{{ minutesText }}</span>
+         </p>
+         <ul class="breadcrumb" itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList">
+             <li itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem">
+                 <meta content="1" itemprop="position">
+                 <a href="{{ site.url }}{{site.baseurl}}/" itemprop="item" title="Beranda">
+                     <span itemprop="name">Beranda</span></a>
+             </li>
+             <li itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem">
+                 <meta content="2" itemprop="position">
+                 <a href="{{ site.url }}{{ site.baseurl }}/category/{{ page.category }}" itemprop="item" title="{{ page.category }}"><span itemprop="name">{{ page.category }}</span></a>
+             </li>
+             <li class="entry-title" itemprop="headline"><a href="{{ post.url | prepend: site.baseurl }}"><span>{{ page.title }}</span></a></li>
+         </ul>
+         <h1 class="post-title" itemprop="name">{{ page.title }}</h1>
+         <p itemprop="description" class="subtitle">{{ page.description }}</p>
+         {% if page.image %}
+         <img src="{{ page.image }}" alt="Imagem de capa" class="post-cover">
+         {% endif %}
+
+         {% include tandabaca.html %}
+         {{ content }}
+         <div class="datagambar">
+             {% include komikblog.html id=page.blogId %}
+         </div>
+         {% include pilihchapter.html %}
+         {% include desaincss.html %}
+     </article>
+     <div class="progress-bar" data-minutes="{{ totalMinutes }}">
+         <span class="time-completed"></span>
+         <span class="time-remaining"></span>
+         <div class="bar">
+             <span class="completed" style="width:0%;"></span>
+             <span class="remaining" style="width:100%;"></span>
+         </div>
+     </div>
+     {% include share.html %}
+     {% include comments.html %}
+     {% include footer.html %}
+ </section>
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BlogPosting",
+            "name": "{{ page.title }}",
+            "headline": "{{ page.subtitle }}",
+            "description": "{{ page.description }}",
+            "image": "{{ page.image }}",
+            "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}",
+            "articleBody": "{{ content | strip_html | xml_escape | textilize }}",
+            "wordcount": "{{ content | number_of_words }}",
+            "inLanguage": "{{ site.language }}",
+            "dateCreated": "{{ page.date | date: '%Y-%m-%d/' }}",
+            "datePublished": "{{ page.date | date: '%Y-%m-%d/' }}",
+            "dateModified": "{{ page.date | date: '%Y-%m-%d/' }}",
+            "author": {
+                "@type": "Person",
+                "name": "{{ author.display_name }}",
+                {% if author.photo %}
+                "image": "{{ author.photo }}",
+                {% else %}
+                "image": {{ "/assets/img/user.jpg" | prepend: site.baseurl | prepend: site.url }},
+                {% endif %}
+                "jobTitle": "{{ author.position }}",
+                "url": "{{ author.url | prepend: site.baseurl | prepend: site.url }}",
+                "sameAs": [
+                    {{ author_urls | split: "," | join: "," }}
+                ]
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "{{ site.name }}",
+                "url": "{{ site.url }}{{site.baseurl}}/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "{{ site.url }}{{site.baseurl}}/assets/img/blog-image.png",
+                    "width": "600",
+                    "height": "315"
+                }
+            },
+            "mainEntityOfPage": "True",
+            "genre": "{{ page.category }}",
+            "articleSection": "{{ page.category }}",
+            "keywords": [{{ page.tags | join: '","' | append: '"' | prepend: '"' }}]
+        }
+        </script>
+        <script src="{{ site.baseurl }}/assets/js/separator.js"></script>
+        <script src="{{ site.baseurl }}/assets/js/lazyload.js"></script>
+        
+    </body>
+</html>

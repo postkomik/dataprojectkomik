@@ -1,0 +1,23 @@
+
+
+<h3 class="gogo">Genre</h3>
+{% assign date_format = site.date_format | default: "%m/%d/%Y" %}
+
+<div class="doik">
+ <ul class="container flex">
+  {% assign tags_list = site.tags %}
+    {% if tags_list.first[0] == null %}
+      {% for tag in tags_list %}
+       <li class="item flex-item"><a href="tags/#{{ tag | slugify }}">{{ tag }}</a></li>
+      {% endfor %}
+    {% else %}
+      {% for tag in tags_list %}
+       <li class="item flex-item"><a href="tags/#{{ tag[0] | slugify }}">{{ tag[0] }}</a></li>
+      {% endfor %}
+    {% endif %}
+  {% assign tags_list = nil %}
+  </ul>
+</div>
+{% for tag in site.tags  %}
+  <a class="post-anchor" id="{{ tag[0] | slugify }}"></a>
+{% endfor %}
