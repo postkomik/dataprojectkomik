@@ -38,25 +38,6 @@
         <b>Chapter Komik {{ page.title }}</b><br />
         <span class="sinopsiss">
         {% include daftarisichapter.html %}  
-            <div id="grid" class="row">
-    {% assign posts = site.posts | where_exp:"post","post.is_generated != true" %}
-    {% for post in posts %}
-    {% if post.category == page.slug %}
-        <div class="box-body">
-            <div class="box-info">
-                <a class="judultag" href="{{ post.url | prepend: site.baseurl }}">
-                    <p class="judul">
-                        {{ page.title }}
-                    </p>
-                </a>
-                <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
-                    <p class="description">{{ post.description }}</p>
-                </a>
-            </div>
-        </div>
-                 {% endif %}
-                 {% endfor %}
-                 </div>
         </span>
     </div>                   
                                         

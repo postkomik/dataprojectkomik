@@ -15,7 +15,7 @@
 # Alias: alias newpost="bash ~/path/to/script/initpost.sh"
 #
 # Example:
-#   ./initpost.sh -c How to replace strings with sed
+#   ./komik.sh -c How to replace strings with sed
 #
 # Important Notes:
 #   - This script was created to generate new markdown files for my blog.
@@ -33,7 +33,7 @@ POST_TITLE="${@:2:$(($#-1))}"
 POST_NAME="$(echo ${@:2:$(($#-1))} | sed -e 's/ /-/g' | sed "y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/")"
 CURRENT_DATE="$(date -u +'%Y-%m-%d')"
 TIME=$(date -u +"%T")
-FILE_NAME="${CURRENT_DATE}-${POST_NAME}.md"
+FILE_NAME="${POST_NAME}.md"
 # ----------------------------------------------------------------
 
 
@@ -42,7 +42,7 @@ FILE_NAME="${CURRENT_DATE}-${POST_NAME}.md"
 
 # Set your destination folder
 BINPATH=$(cd `dirname $0`; pwd)
-POSTPATH="${BINPATH}/_posts"
+POSTPATH="${BINPATH}/komik"
 DIST_FOLDER="$POSTPATH"
 
 # Set your blog URL
@@ -110,11 +110,11 @@ EOT
 initpost_content() {
 
 echo "---"
-echo "layout: post"
+echo "layout: manga"
 echo "title: \"${POST_TITLE}\""
 echo "date: ${CURRENT_DATE} ${TIME}"
-echo "image: https://1.bp.blogspot.com/-B87WJsQAZDM/YGcaei-OwUI/AAAAAAAAPVw/ENAv6anu0-Y37-182_i_Jx_k52nDE15dwCLcBGAsYHQ/s72-c/path-of-the-shaman-915203-FDmR0W1b.jpg"
-echo "category: Magic  Emperor"
+echo "image: "
+echo "category: "
 echo "tags:"
 echo "author: Postkomik"
 echo "status: "

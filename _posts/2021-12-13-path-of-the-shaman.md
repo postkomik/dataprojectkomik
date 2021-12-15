@@ -4,22 +4,24 @@ title: "Path of the Shaman"
 subtitle: Path of the Shaman
 date: 2021-12-13 07:15:55
 image: https://1.bp.blogspot.com/-B87WJsQAZDM/YGcaei-OwUI/AAAAAAAAPVw/ENAv6anu0-Y37-182_i_Jx_k52nDE15dwCLcBGAsYHQ/s72-c/path-of-the-shaman-915203-FDmR0W1b.jpg
-category: 
-- Manga
-- Path of the Shaman
+category: Path of the Shaman
 label: Path of the Shaman
 tags: 
-- Action 
-- Adventure 
-- Fantasy 
-- Historical 
-- Martial Arts 
-- Shounen
 author: Postkomik
 status: Ongoing
 description: 
- 
----
+--- 
+
+<h1>list</h1>
+
+<ul>
+{% for post in site.post %}
+<li>{{page.title}}</li>
+{% endfor %}
+</ul>
+
+
+
 
 jika Malaikat Maut memanggil namamu tiga kali, kamu akan dibawa ke dunia bawah.
 
