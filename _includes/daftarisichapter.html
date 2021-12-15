@@ -1,11 +1,11 @@
+
+
 <div class="isichapter">
-{% for post in site.posts %}
-{% if post.category == {{page.category}} %}
-<ul>
-<li><time class="tanggal">{{ post.date | date: "%b %d, %Y" }}</time> &nbsp; <a href="{{ post.url }}">{{ post.title }}</a></li>
-</ul>
-{% endif %}
-{% endfor %}
+    {% for post in site.posts %}
+    {% if post.category contains page.category %}
+    <ul>
+        <li><time class="tanggal">{{ post.date | date: "%b %d, %Y" }}</time> &nbsp; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    </ul>
+    {% endif %}
+    {% endfor %}
 </div>
-
-

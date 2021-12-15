@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/BlogPosting">
+{% include head.html %}
+    <body class="has-push-menu">
+        {% include minutes-to-read.html %}
+        {% include svg-icons.html %}
+        {% include header.html %}
+        <section  class="post">
+            <article role="article" id="post" class="post-content" itemprop="articleBody">
+                <div class="arleth98">
+                    <h2 class="goled">{{ page.title }}</h2>
+        <div class="inf-wrap">
+        <div class="img-thumb">            
+            {% if page.image %}
+         <img src="{{ page.image }}" alt="{{ page.title }}">
+             {% endif %}
+        </div>
+        <div class="inf-inc">
+            <div class="lol"><b>Status</b>: {{ page.status }}</div>
+            <div class="lol"><b>Released</b>: {{ page.date }}</div>
+            <div class="lol"><b>Type</b>: {{ page.category }}</div>
+            <div class="lol"><b>Post By</b>: {{ page.author }}</div>
+            <div class="lol"><b>Genres</b>:  <a href="{{ site.url }}{{ site.baseurl }}/tags/{{ page.tags }}">{{ page.tags }}</a>
+            </div> 
+            <div class="lol"><b>Keyword</b>: baca Manga, Baca Komik, Baca Manhua bahasa indonesia</div>
+            <div class="lol"><b>Name Blog</b>: https://postkomik.github.io</div>
+            <div class="lol"><b>Cms</b>: Jekyll</div>           
+        </div>
+        </div>
+                        <br />
+    <div class="synopsis">
+        <b>Sinopsis  Komik Manga {{ page.title }} :</b><br />
+        <div class="content">
+                {{ content }}
+        </div>
+    </div>
+     <div class="synopsis">
+        <b>Chapter Komik {{ page.title }}</b><br />
+       {% include daftarisichapter.html %}
+    
+    </div>                   
+                                        
+                </div>  
+            </article>
+     {% include pilihchapter.html %} 
+     {% include desaincss.html %}      
+     {% include share.html %}
+     {% include comments.html %}
+     {% include footer.html %}
+        </section>
+                <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BlogPosting",
+            "name": "{{ page.title }}",
+            "headline": "{{ page.subtitle }}",
+            "description": "{{ page.description }}",
+            "image": "{{ page.image }}",
+            "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}",
+            "articleBody": "{{ content | strip_html | xml_escape | textilize }}",
+            "wordcount": "{{ content | number_of_words }}",
+            "inLanguage": "{{ site.language }}",
+            "dateCreated": "{{ page.date | date: '%Y-%m-%d/' }}",
+            "datePublished": "{{ page.date | date: '%Y-%m-%d/' }}",
+            "dateModified": "{{ page.date | date: '%Y-%m-%d/' }}",
+            "author": {
+                "@type": "Person",
+                "name": "{{ author.display_name }}",
+                {% if author.photo %}
+                "image": "{{ author.photo }}",
+                {% else %}
+                "image": {{ "/assets/img/user.jpg" | prepend: site.baseurl | prepend: site.url }},
+                {% endif %}
+                "jobTitle": "{{ author.position }}",
+                "url": "{{ author.url | prepend: site.baseurl | prepend: site.url }}",
+                "sameAs": [
+                    {{ author_urls | split: "," | join: "," }}
+                ]
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "{{ site.name }}",
+                "url": "{{ site.url }}{{site.baseurl}}/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "{{ site.url }}{{site.baseurl}}/assets/img/blog-image.png",
+                    "width": "600",
+                    "height": "315"
+                }
+            },
+            "mainEntityOfPage": "True",
+            "genre": "{{ page.category }}",
+            "articleSection": "{{ page.category }}",
+            "keywords": [{{ page.tags | join: '","' | append: '"' | prepend: '"' }}]
+        }
+        </script>
+    </body>
+</html>
